@@ -1,0 +1,101 @@
+
+/* temporary classes just for testing */
+
+.red {
+	background-color: red;
+}
+
+.green {
+	background-color: green;
+}
+
+.blue {
+	background-color: blue;
+}
+
+.yellow {
+	background-color: yellow;
+}
+
+
+
+/* corrected existing classes, tags, etc. ... */
+
+html, body {
+	/* min-height: 100vh; */
+}
+
+blockquote {
+	border-left: 3px solid lightgray;
+}
+
+.accordion, 
+.card-body {
+	background-color:  #FFFFFF;
+	border:  1px solid #DDE0E6;
+}
+
+.accordion-body {
+    /* padding-top: 0; */
+}
+
+.accordion-button:not(.collapsed) {
+    color: #4f4f4f;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%234f4f4f'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z'/%3E%3C/svg%3E");
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #2375E1;
+}
+
+
+
+/* brand new classes */
+
+.wrapper {
+	display: flex;
+	background-color: #F4F7FB;
+	height: 100%;
+}
+
+.column-left {
+	flex-basis: 100%;
+}
+
+.column-right {
+	flex-basis: 50%;
+}
+
+.height-full {
+	/* height:  100vh; */
+}
+
+.text-username {
+	font-size: 1.5rem
+}
+
+.text-userjob {
+	color: rgba(0,0,0,.55);
+}
+
+.color-quotecaption {
+	color: #757575;
+}
+
+.navbar-light .navbar-nav .highlighted-link{
+	color: #2375E1;
+    border-bottom: 4px solid #2375E1;
+}
+
+.navbar-nopaddings-y {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.navbar-margin-t-and-b {
+	margin-top: .5rem;
+	margin-bottom: .5rem;
+}
