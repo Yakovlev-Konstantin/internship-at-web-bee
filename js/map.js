@@ -1,15 +1,24 @@
 function initMap() {
-  var geoplace1 = { lat: -25.312, lng: -57.533 };
-  drawMap();
+  var geoplace1;
 
   if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      geoplace1 = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
-      drawMap();
-    });
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+  } else {
+    /* This browser does not support geolocation API */
+    console.log("This browser does not support geolocation API");
+  }
+
+  function geoSuccess(position) {
+    geoplace1 = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
+    drawMap();
+  }
+
+  function geoError(position) {
+    geoplace1 = { lat: -25.312, lng: -57.533 };
+    drawMap();
   }
 
   function drawMap() {
@@ -26,7 +35,7 @@ function initMap() {
 
     map1.addListener("idle", () => {
       let preloaders = document.getElementsByClassName("loader");
-      if (preloaders[0]) {
+      if (!(preloaders[0] == null)) {
         for (let i = 0; i < preloaders.length; i++) preloaders[i].remove();
       }
     });
