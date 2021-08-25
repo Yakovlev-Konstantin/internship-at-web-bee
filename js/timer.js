@@ -7,8 +7,10 @@ var timeSpentOnThePage = setInterval(function () {
 function calcSpentTime() {
   var dateCurrent = new Date();
   var timeDiff = dateCurrent.getTime() - dateOfEnter.getTime();
-  document.getElementById("clock1").innerHTML =
-    formatMillisecondsToTimeHHMMSS(timeDiff);
+  if (document.getElementById("clock1")) {
+    document.getElementById("clock1").innerHTML =
+      formatMillisecondsToTimeHHMMSS(timeDiff);
+  }
 
   function formatMillisecondsToTimeHHMMSS(ms) {
     var ss = (ms / 1000) % 60;

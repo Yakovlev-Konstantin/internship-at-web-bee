@@ -23,6 +23,10 @@
     />
     <!-- Custom CSS styles -->
     <link rel="stylesheet" href="css/style.css" />
+    <!-- Custom scripts -->
+    <script type="text/javascript" src="js/timer.js"></script>
+    <script type="text/javascript" src="js/pageChange.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
   </head>
 
   <body>
@@ -56,21 +60,36 @@
       <!-- 2nd navbar -->
       <nav class="navbar navbar-expand navbar-light bg-light">
         <div class="container-fluid">
-          <ul class="navbar-nav me-auto">
+          <ul class="navbar-nav me-auto navbar-nav-2nd">
             <li class="nav-item me-1">
-              <a class="nav-link highlighted-link" href="./index.html">
+              <a
+                id="activity"
+                class="nav-link highlighted-link"
+                href="activity.html"
+                onclick="goToPage('activity.html')"
+              >
                 <i class="fas fa-bars"></i>
                 <span>Activity</span>
               </a>
             </li>
             <li class="nav-item me-1">
-              <a class="nav-link" href="./map.html">
+              <a
+                id="map"
+                class="nav-link"
+                href="map.html"
+                onclick="goToPage('map.html')"
+              >
                 <i class="fas fa-calendar-alt"></i>
                 <span>Map</span>
               </a>
             </li>
             <li class="nav-item me-1">
-              <a class="nav-link" href="./time.html">
+              <a
+                id="time"
+                class="nav-link"
+                href="time.html"
+                onclick="goToPage('time.html')"
+              >
                 <i class="fas fa-cog"></i>
                 <span>Time</span>
               </a>
@@ -79,8 +98,8 @@
           <ul class="navbar-nav d-flex flex-row">
             <li class="nav-item me-1">
               <a class="nav-link" href="#">
-                <span>Notes</span>
                 <i class="fas fa-sticky-note"></i>
+                <span>Notes</span>
               </a>
             </li>
             <li class="nav-item me-1">
@@ -126,7 +145,7 @@
       </nav>
 
       <!-- rest of the webpage-->
-      <div class="wrapper">
+      <div id="content" class="wrapper">
         <!-- left column of cards -->
         <div class="column-left m-4">
           <!-- old card "Himalayan sunset" -->
@@ -573,7 +592,5 @@
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
     ></script>
-    <!-- Custom scripts -->
-    <!-- <script type="text/javascript"></script> -->
   </body>
 </html>
