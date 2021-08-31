@@ -25,7 +25,19 @@
 // }
 
 window.onload = () => {
-  history.pushState("activity.html", "", "?page=activity.html");
+  if (!sessionStorage.getItem("page")) {
+    history.replaceState("activity.html", "", "activity.html");
+    makeNewPage("activity.html");
+    updateCurrLink("activity.html");
+  } else {
+    history.replaceState(
+      sessionStorage.getItem("page"),
+      "",
+      sessionStorage.getItem("page")
+    );
+    makeNewPage(sessionStorage.getItem("page"));
+    updateCurrLink(sessionStorage.getItem("page"));
+  }
 
   let tabs = document.querySelectorAll(".navbar-nav-2nd .nav-link");
 
@@ -50,41 +62,37 @@ window.onpopstate = function () {
   if (window.history.state) {
     makeNewPage(window.history.state);
     updateCurrLink(window.history.state);
-
-    function updateCurrLink(shortUrl) {
-      let tabs = document.querySelectorAll(".navbar-nav-2nd .nav-link");
-      let currentTab = document.querySelector(
-        ".navbar-nav-2nd .highlighted-link"
-      );
-
-      // Polyfill
-      if (!String.prototype.includes) {
-        String.prototype.includes = function (search, start) {
-          "use strict";
-          if (typeof start !== "number") {
-            start = 0;
-          }
-
-          if (start + search.length > this.length) {
-            return false;
-          } else {
-            return this.indexOf(search, start) !== -1;
-          }
-        };
-      }
-
-      if (!currentTab.href.includes("?page=" + shortUrl)) {
-        currentTab.classList.remove("highlighted-link");
-        let newTab = document.querySelector(
-          `.navbar-nav-2nd [href="${shortUrl}"]`
-        );
-        newTab.classList.add("highlighted-link");
-      }
-    }
   }
 };
 
-function makeNewPage(ShortUrl) {
+function updateCurrLink(shortUrl) {
+  let tabs = document.querySelectorAll(".navbar-nav-2nd .nav-link");
+  let currentTab = document.querySelector(".navbar-nav-2nd .highlighted-link");
+
+  // Polyfill
+  if (!String.prototype.includes) {
+    String.prototype.includes = function (search, start) {
+      "use strict";
+      if (typeof start !== "number") {
+        start = 0;
+      }
+
+      if (start + search.length > this.length) {
+        return false;
+      } else {
+        return this.indexOf(search, start) !== -1;
+      }
+    };
+  }
+
+  if (!currentTab.href.includes(shortUrl)) {
+    currentTab.classList.remove("highlighted-link");
+    let newTab = document.querySelector(`.navbar-nav-2nd [href="${shortUrl}"]`);
+    newTab.classList.add("highlighted-link");
+  }
+}
+
+function makeNewPage(ShortUrl = "activity.html") {
   // console.log("url changed");
   // if (typeof goToPage.counter == "undefined") {
   //   goToPage.counter = 0;
@@ -122,6 +130,6 @@ function makeNewPage(ShortUrl) {
 
 function goToPage(url) {
   event.preventDefault();
-  history.pushState(url, "", `?page=${url}`);
+  history.pushState(url, "", url);
   makeNewPage(url);
 }
